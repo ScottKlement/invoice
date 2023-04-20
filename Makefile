@@ -56,7 +56,7 @@ $(shell test -d $(CURDIR)/tmp || mkdir $(CURDIR)/tmp; rm $(CURDIR)/tmp/*.txt >/d
 #
 
 ifeq ($(DEBUG), 1)
-	DEBUG_OPTS     := dbgview(*all)
+	DEBUG_OPTS     := dbgview(*list)
 	SQL_DEBUG_OPTS := dbgview(*source)
 	CPP_OPTS       := $(CPP_OPTS) output(*print)
 else
