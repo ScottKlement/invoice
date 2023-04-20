@@ -1,8 +1,8 @@
 **FREE
 
-ctl-opt option(*SRCSTMT:*NODEBUGIO) bnddir('INVOICE');
+ctl-opt option(*SRCSTMT:*NODEBUGIO) bnddir('INVOICE')  main(MAINLINE);
 /if defined(*CRTBNDRPG)
-ctl-opt dftactgrp(*no) actgrp('SKC') main(MAINLINE);
+ctl-opt dftactgrp(*no) actgrp('SKC');
 /endif
 
 dcl-f INVINQ2D workstn SFILE(INVINQ2S:RRN2)
