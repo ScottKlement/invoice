@@ -29,6 +29,7 @@ BNDDIR        :=
 CL_OPTS       :=
 RPG_OPTS      := option(*noseclvl)
 PGM_OPTS      :=
+SQL_OPTS			:= commit(*none) option(*sys)
 OWNER         := qpgmr
 USRPRF        := *user
 BNDSRVPGM			:=
@@ -57,7 +58,7 @@ $(shell test -d $(CURDIR)/tmp || mkdir $(CURDIR)/tmp; rm $(CURDIR)/tmp/*.txt >/d
 
 ifeq ($(DEBUG), 1)
 	DEBUG_OPTS     := dbgview(*list)
-	SQL_DEBUG_OPTS := dbgview(*source)
+	SQL_DEBUG_OPTS := dbgview(*list)
 	CPP_OPTS       := $(CPP_OPTS) output(*print)
 else
 	DEBUG_OPTS     := dbgview(*none)

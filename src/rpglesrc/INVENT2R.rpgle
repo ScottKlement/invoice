@@ -497,7 +497,7 @@ dcl-proc EditHeader;
     DSP3.MSG = *BLANKS;
 
     if EXIT or CANCEL;
-      return GO_BACK;
+      return QUIT;
     endif;
 
   enddo;
