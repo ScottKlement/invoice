@@ -1,8 +1,7 @@
      A*%%TS  SD  20230405  203221  SKLEMENT    REL-V7R3M0  5770-WDS
      A*%%EC
      A                                      DSPSIZ(24 80 *DS3)
-     A                                      PRINT(25)
-     A                                      CA02(25)
+     A                                      PRINT
      A          R INVINQ1
      A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
      A                                      CA03(03)

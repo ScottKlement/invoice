@@ -10,12 +10,6 @@
 
 .....D*ame+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
      D DATEFLD         S               D   DATFMT(*ISO)
-     D URL             s            300a   varying
-     D CMD             s           2000a   varying
-
-     D QCMDEXC         PR                  extpgm('QCMDEXC')
-     D   cmd                       2000a   const
-     D   len                         15p 5 const
 
 .....C*0N01Factor1+++++++Opcode&ExtFactor2+++++++Result++++++++Len++D+HiLoEq
      C     *INLR         DOUEQ     *ON
@@ -221,11 +215,6 @@
      C                   LEAVESR
      C                   ENDIF
 
-     C     *IN25         IFEQ      *ON
-     C                   MOVE      *OFF          *IN25
-     C                   EXSR      OPENURL
-     C                   ENDIF
-
      C     *IN08         IFEQ      *ON
      C                   MOVEL     'B'           MODE
      C                   Z-ADD     2             STEP
@@ -253,11 +242,6 @@
      C                   LEAVESR
      C                   ENDIF
 
-     C     *IN25         IFEQ      *ON
-     C                   MOVE      *OFF          *IN25
-     C                   EXSR      OPENURL
-     C                   ENDIF
-
      C     *IN08         IFEQ      *ON
      C                   MOVEL     'S'           MODE
      C                   Z-ADD     2             STEP
@@ -265,26 +249,5 @@
      C                   ENDIF
 
      C                   ENDDO
-     C*------------------------
-     C                   ENDSR
-
-
-     C*=============================================================
-     C* Open a URL to a GUI print of the invoice
-     C*=============================================================
-     C     OPENURL       BEGSR
-     C*------------------------
-     C                   EVAL      url = 'http://i.scottklement.com'
-     C                                 + '/invoices'
-     C                                 + '/inv' + %editc(invno:'X') + '.pdf'
-
-     C                   EVAL      cmd = 'STRPCO'
-     C                   CALLP(E)  QCMDEXC(cmd:%len(cmd))
-
-     C                   EVAL      cmd = 'STRPCCMD PCCMD('''
-     C                                 + 'open '
-     C                                 + url
-     C                                 + ''') PAUSE(*NO)'
-     C                   CALLP     QCMDEXC(cmd:%len(cmd))
      C*------------------------
      C                   ENDSR
