@@ -1,0 +1,239 @@
+     A*%%TS  SD  20230412  083620  SKLEMENT    REL-V7R3M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      PRINT(25)
+     A                                      CA02(25)
+     A                                      INDARA
+     A          R INVINQ1
+     A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
+     A                                      CA03(03)
+     A                                  1 33'Display Invoice'
+     A                                      DSPATR(HI)
+     A                                  7 26'Enter Invoice Number:'
+     A            INVNO          7S 0B  7 48
+     A            MSG           48   O 13 17DSPATR(HI)
+     A                                      DSPATR(BL)
+     A                                 22  3'F3=Exit'
+     A          R INVINQ2S                  SFL
+     A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            ITEMNO         5Y 0O 10  2EDTCDE(3)
+     A            PRODUCT        1A  O 10  8
+     A            QTY            5Y 0O 10 10EDTCDE(3)
+     A            UOM            3   O 10 16
+     A            DESCR         30   O 10 20
+     A            PRICE          7Y 2O 10 51EDTCDE(L)
+     A            WGTLBS         7  1O 10 61EDTCDE(3)
+     A            EXTN           8Y 2O 10 70EDTCDE(L)
+     A          R INVINQ2C                  SFLCTL(INVINQ2S)
+     A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
+     A                                      CA12(12)
+     A                                      CA03(03)
+     A                                      CF08(08)
+     A                                      OVERLAY
+     A  51                                  SFLDSP
+     A N50                                  SFLDSPCTL
+     A  50                                  SFLCLR
+     A N50                                  SFLEND(*MORE)
+     A                                      SFLSIZ(0999)
+     A                                      SFLPAG(0009)
+     A                                  1 33'Display Invoice'
+     A                                      DSPATR(HI)
+     A                                  3  5'Invoice:'
+     A                                      DSPATR(HI)
+     A            INVNO          7Y 0O  3 14EDTCDE(3)
+     A                                      DSPATR(RI)
+     A                                  3 26'Delivery Address              '
+     A                                      DSPATR(UL)
+     A                                      DSPATR(HI)
+     A                                  4  5'Created:'
+     A                                      DSPATR(HI)
+     A            CRTDATE6       8A  O  4 14
+     A            DELNAME       30   O  4 26
+     A                                  4 58'PO:'
+     A                                      DSPATR(HI)
+     A            CUSTPO        15   O  4 62
+     A                                  5  3'Delivered:'
+     A                                      DSPATR(HI)
+     A            DELDATE6       8A  O  5 14
+     A            DELCONT       30   O  5 26
+     A                                  5 58'PO DATE:'
+     A                                      DSPATR(HI)
+     A            PODATE6        8A  O  5 67
+     A                                  6  4'Invoiced:'
+     A                                      DSPATR(HI)
+     A            INVDATE6       8A  O  6 14
+     A            DELSTR        30   O  6 26
+     A                                  7  8'Paid:'
+     A                                      DSPATR(HI)
+     A            PAIDDATE6      8A  O  7 14
+     A            DELCITY       20A  O  7 26
+     A            DELSTATE       2   O  7 47
+     A            DELPOST       13   O  7 50
+     A                                  8  8'Cust:'
+     A                                      DSPATR(HI)
+     A            CUSTNO         4S 0O  8 14
+     A            DELCNTRY      30   O  8 26
+     A                                  9  2' Item'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9  8'T'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 10'  Qty'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 16'UOM'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 20'       Item Description       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 51'   Price '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 61'  Weight'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 70'  LineExtn'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A          R INVINQ2F
+     A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            MSG1          48A  O 20  2DSPATR(RI)
+     A                                 20 51'Subtotal:'
+     A                                      DSPATR(HI)
+     A            SUBTOTAL       8  2O 20 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A            MSG2          48A  O 21  2DSPATR(RI)
+     A                                 21 51'Ship/Hnd:'
+     A                                      DSPATR(HI)
+     A            SHIPPING       8  2O 21 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A            MSG3          48A  O 22  2DSPATR(RI)
+     A                                 22 56'Tax:'
+     A                                      DSPATR(HI)
+     A            TAX            8  2O 22 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A                                 23 54'Total:'
+     A                                      DSPATR(HI)
+     A            WEIGHT         7  1O 23 61EDTCDE(3)
+     A                                      DSPATR(HI)
+     A            TOTAL          8  2O 23 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A                                 24 18'F12=Back'
+     A                                      DSPATR(HI)
+     A            MSG           48   O 24 27DSPATR(HI)
+     A                                      DSPATR(BL)
+     A                                 24  2'F8=Billing Addr'
+     A                                      DSPATR(HI)
+     A          R INVINQ3S                  SFL
+     A            ITEMNO         5Y 0O 10  2EDTCDE(3)
+     A            PRODUCT        1   O 10  8
+     A            QTY            5Y 0O 10 10EDTCDE(3)
+     A            UOM            3   O 10 16
+     A            DESCR         30   O 10 20
+     A            PRICE          7Y 2O 10 51EDTCDE(L)
+     A            WGTLBS         7Y 1O 10 61EDTCDE(3)
+     A            EXTN           8Y 2O 10 70EDTCDE(L)
+     A          R INVINQ3C                  SFLCTL(INVINQ3S)
+     A*%%TS  SD  20230405  143129  SKLEMENT    REL-V7R3M0  5770-WDS
+     A                                      SFLSIZ(0999)
+     A                                      SFLPAG(0009)
+     A                                      CA12(12)
+     A                                      CA03(03)
+     A                                      CF08(08)
+     A                                      OVERLAY
+     A  51                                  SFLDSP
+     A N50                                  SFLDSPCTL
+     A  50                                  SFLCLR
+     A N50                                  SFLEND(*MORE)
+     A                                  1 33'Display Invoice'
+     A                                      DSPATR(HI)
+     A                                  3  5'Invoice:'
+     A                                      DSPATR(HI)
+     A            INVNO          7Y 0O  3 14EDTCDE(3)
+     A                                      DSPATR(RI)
+     A                                  3 26'Billing Address               '
+     A                                      DSPATR(UL)
+     A                                      DSPATR(HI)
+     A                                  4  5'Created:'
+     A                                      DSPATR(HI)
+     A            CRTDATE6       8A  O  4 14
+     A            BILNAME       30A  O  4 26
+     A                                  4 58'PO:'
+     A                                      DSPATR(HI)
+     A            CUSTPO        15A  O  4 62
+     A                                  5  3'Delivered:'
+     A                                      DSPATR(HI)
+     A            DELDATE6       8A  O  5 14
+     A            BILCONT       30A  O  5 26
+     A                                  5 58'PO DATE:'
+     A                                      DSPATR(HI)
+     A            PODATE6        8A  O  5 67
+     A                                  6  4'Invoiced:'
+     A                                      DSPATR(HI)
+     A            INVDATE6       8A  O  6 14
+     A            BILSTR        30A  O  6 26
+     A                                  7  8'Paid:'
+     A                                      DSPATR(HI)
+     A            PAIDDATE6      8A  O  7 14
+     A            BILCITY       20A  O  7 26
+     A            BILSTATE       2A  O  7 47
+     A            BILPOST       13A  O  7 50
+     A                                  8  8'Cust:'
+     A                                      DSPATR(HI)
+     A            CUSTNO         4S 0O  8 14
+     A            BILCNTRY      30A  O  8 26
+     A                                  9  2' Item'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9  8'T'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 10'  Qty'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 16'UOM'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 20'       Item Description       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 51'   Price '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 61'  Weight'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  9 70'  LineExtn'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A          R INVINQ3F
+     A*%%TS  SD  20230322  145432  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            MSG1          48A  O 20  2DSPATR(RI)
+     A                                 20 51'Subtotal:'
+     A                                      DSPATR(HI)
+     A            SUBTOTAL       8Y 2O 20 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A            MSG2          48A  O 21  2DSPATR(RI)
+     A                                 21 51'Ship/Hnd:'
+     A                                      DSPATR(HI)
+     A            SHIPPING       8Y 2O 21 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A            MSG3          48A  O 22  2DSPATR(RI)
+     A                                 22 56'Tax:'
+     A                                      DSPATR(HI)
+     A            TAX            8Y 2O 22 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A                                 23 54'Total:'
+     A                                      DSPATR(HI)
+     A            WEIGHT         7Y 1O 23 61EDTCDE(3)
+     A                                      DSPATR(HI)
+     A            TOTAL          8Y 2O 23 70EDTCDE(L)
+     A                                      DSPATR(HI)
+     A                                 24 19'F12=Back'
+     A                                      DSPATR(HI)
+     A            MSG           48A  O 24 28DSPATR(HI)
+     A                                      DSPATR(BL)
+     A                                 24  2'F8=Shipping Addr'
+     A                                      DSPATR(HI)

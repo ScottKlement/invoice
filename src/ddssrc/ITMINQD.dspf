@@ -1,0 +1,62 @@
+     A*%%TS  SD  20230405  123444  SKLEMENT    REL-V7R3M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      PRINT
+     A          R ITMINQ1S                  SFL
+     A*%%TS  SD  20230405  103648  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            OPT            1   B  6  5
+     A  40                                  DSPATR(ND)
+     A            IMITEMNO       5Y 0O  6  9EDTCDE(3)
+     A            IMDESCR       35   O  6 16
+     A            UNDESC        12   O  6 53
+     A            IMPRICE        9Y 3O  6 67EDTCDE(L)
+     A          R ITMINQ1C                  SFLCTL(ITMINQ1S)
+     A*%%TS  SD  20230405  123444  SKLEMENT    REL-V7R3M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0016)
+     A                                      CA03(03 'F3=Exit')
+     A                                      CA12(12 'F12=Cancel')
+     A                                      CA05(05 'F5=Refresh')
+     A                                      OVERLAY
+     A                                      SFLCSRRRN(&LASTRRN1)
+     A  51                                  SFLDSP
+     A N50                                  SFLDSPCTL
+     A  50                                  SFLCLR
+     A N50                                  SFLEND(*MORE)
+     A            LASTRRN1       5S 0H
+     A N40        NEXTRRN1       4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1 31'Item Master Inquiry'
+     A                                      DSPATR(HI)
+     A                                  1 73'ITMINQ1'
+     A                                  3  2'Filter:'
+     A                                      DSPATR(HI)
+     A            FILTER        35A  B  3 10CHECK(LC)
+     A  40                                  DSPATR(PC)
+     A                                  3 53'1=Select'
+     A  40                                  DSPATR(ND)
+     A                                      COLOR(BLU)
+     A                                  5  4'Opt'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A  40                                  DSPATR(ND)
+     A                                  5  9' Item'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 16'Description                       -
+     A                                       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 53'Units       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 67'     Price '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A          R ITMINQ1F
+     A*%%TS  SD  20230405  113046  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            MSG           78A  O 23  2DSPATR(HI)
+     A                                      DSPATR(BL)
+     A                                 24 14'F12=Cancel'
+     A                                      COLOR(BLU)
+     A                                 24  2'F5=Refresh'
+     A                                      COLOR(BLU)

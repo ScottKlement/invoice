@@ -1,0 +1,37 @@
+     A          R HEADING
+     A                                      PAGRTT(0)
+     A            INVNO          7  0O  9 72EDTCDE(3)
+     A            DELNAME       30A  O 15 12
+     A            BILNAME       30A  O 15 49
+     A            DELCONT       30A  O 16 12
+     A            BILCONT       30A  O 16 49
+     A            DELSTREET     30A  O 17 12
+     A            BILSTREET     30A  O 17 49
+     A            DELCSZ        35A  O 18 12
+     A            BILCSZ        35A  O 18 49
+     A            DELCNTRY      30A  O 19 12
+     A            BILCNTRY      30A  O 19 49
+     A            ACCTREP        3A  O 24 25
+.....A*N01N02N03T.Name++++++RLen++TDpBLinPosFunctions++++++++++++++++++
+     A            INVDATEUS       L  O 24 49DATFMT(*USA)
+     A            TERMSMSG      18A  O 24 62
+     A*
+     A          R DETAIL1
+     A            QTY            7  0O 28  7EDTCDE(L)
+     A            DESCR         35   O 28 17
+     A            PRICE          9  3O 28 56EDTCDE(L)
+     A            LINEAMT        9  3O 28 70EDTCDE(L)
+     A          R DETAIL2                   SPACEB(1)
+     A            QTY            7  0O     7EDTCDE(L)
+     A            DESCR         35   O    17
+     A            PRICE          9  3O    56EDTCDE(L)
+     A            LINEAMT        9  3O    70EDTCDE(L)
+     A*
+     A          R FOOTER
+     A            SUBTOTAL       9  2O 43 70EDTCDE(L)
+     A            TAX            7  2O 45 72EDTCDE(M)
+     A            MSG1          50A  O 47  7
+     A            SHIPPING       7  2O 47 72EDTCDE(M)
+     A            MSG2          50A  O 48  7
+     A            MSG3          50A  O 49  7
+     A            TOTAL          9  2O 49 70EDTCDE(L)

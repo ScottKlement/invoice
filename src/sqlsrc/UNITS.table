@@ -1,0 +1,20 @@
+Create or Replace Table UNITS (
+  UNCODE  char(1) not null default ' ',
+  UNCODE3 char(3) not null default ' ',
+  UNDESC  char(12) not null default ' ',
+  primary key (UNCODE)
+)
+rcdfmt UNITSF;
+
+delete from UNITS;
+
+insert into UNITS values
+ ('E', 'EA',  'Each'),
+ ('S', 'SES', 'Sessions'),
+ ('I', 'INV', 'Invoices'),
+ ('C', 'MI',  'Miles (Car)'),
+ ('3', 'HLF', 'Half Days'),
+ ('D', 'DAY', 'Days'),
+ ('M', 'MON', 'Months'),
+ ('H', 'HRS', 'Hours')
+;

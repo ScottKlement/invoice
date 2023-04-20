@@ -1,0 +1,178 @@
+**FREE
+
+/if defined(INVOICE_H)
+/eof
+/endif
+/define INVOICE_H
+
+// Get external definitions of files so that we can
+// use the external definitions in our prototypesCUSTMAS.
+
+dcl-ds CUSTMAS_t ext extname('CUSTMAS') qualified template end-ds;
+dcl-ds INVHDR_t  ext extname('INVHDR')  qualified template end-ds;
+dcl-ds INVDET_t  ext extname('INVDET')  qualified template end-ds;
+dcl-ds ITEMMAS_t ext extname('ITEMMAS') qualified template end-ds;
+dcl-ds UNITS_t   ext extname('UNITS')   PREFIX('':2) qualified template end-ds;
+dcl-ds CTRLDTA_t ext extname('CTRLDTA') PREFIX('':1) qualified template end-ds;
+
+dcl-c  SUCCESS 1;
+dcl-c  FAIL    0;
+
+dcl-ds INVOICE_HEADER_t qualified inz template;
+  INVNO     like(INVHDR_t.INVNO   );
+  CRTDATE   like(INVHDR_t.CRTDATE );
+  CUSTNO    like(INVHDR_t.CUSTNO  );
+  DELDATE   like(INVHDR_t.DELDATE );
+  INVDATE   like(INVHDR_t.INVDATE );
+  PAIDDATE  like(INVHDR_t.PAIDDATE);
+  CUSTPO    like(INVHDR_t.CUSTPO  );
+  PODATE    like(INVHDR_t.PODATE  );
+  DELNAME   like(INVHDR_t.DELNAME );
+  DELCONT   like(INVHDR_t.DELCONT );
+  DELSTREET like(INVHDR_t.DELSTREET);
+  DELCITY   like(INVHDR_t.DELCITY );
+  DELSTATE  like(INVHDR_t.DELSTATE);
+  DELPOSTAL like(INVHDR_t.DELPOSTAL);
+  DELCNTRY  like(INVHDR_t.DELCNTRY);
+  PHONE     like(CUSTMAS_t.PHONE);
+  BILNAME   like(INVHDR_t.BILNAME );
+  BILCONT   like(INVHDR_t.BILCONT );
+  BILSTREET like(INVHDR_t.BILSTREET);
+  BILCITY   like(INVHDR_t.BILCITY );
+  BILSTATE  like(INVHDR_t.BILSTATE);
+  BILPOSTAL like(INVHDR_t.BILPOSTAL);
+  BILCNTRY  like(INVHDR_t.BILCNTRY);
+  BILPHONE  like(CUSTMAS_t.BILPHONE);
+  MSG1      like(INVHDR_t.MSG1    );
+  MSG2      like(INVHDR_t.MSG2    );
+  MSG3      like(INVHDR_t.MSG3    );
+  WEIGHT    like(INVHDR_t.WEIGHT  );
+  SUBTOTAL  like(INVHDR_t.SUBTOTAL);
+  SHIPPING  like(INVHDR_t.SHIPPING);
+  TAX       like(INVHDR_t.TAX     );
+  TOTAL     like(INVHDR_t.TOTAL   );
+  LASTORD   like(CUSTMAS_t.LASTORD);
+  LASTPAID  like(CUSTMAS_t.LASTPAID);
+  TERMTYPE  like(CUSTMAS_t.TERMTYPE);
+  TERMDAYS  like(CUSTMAS_t.TERMDAYS);
+  TERMSMSG  varchar(18);
+  ACCTREP   like(CUSTMAS_t.ACCTREP);
+  TERR      like(CUSTMAS_t.TERR);
+  CHANNEL   like(CUSTMAS_t.CHANNEL);
+end-ds;
+
+
+dcl-ds INVOICE_DETAIL_t qualified inz template;
+  INVNO     like(INVDET_t.INVNO  );
+  LINENO    like(INVDET_t.LINENO );
+  ITEMNO    like(INVDET_t.ITEMNO );
+  PRODUCT   like(INVDET_t.PRODUCT);
+  UOM       like(INVDET_t.UOM    );
+  DESCR     like(INVDET_t.DESCR  );
+  PRICE     like(INVDET_t.PRICE  );
+  QTY       like(INVDET_t.QTY    );
+  WGTLBS    like(INVDET_t.WGTLBS );
+  UOM3      like(UNITS_t.CODE3);
+  MINQTY    like(ITEMMAS_t.MINQTY);
+  MINPRC    like(ITEMMAS_t.MINPRC);
+  MAXPRC    like(ITEMMAS_t.MAXPRC);
+end-ds;
+
+dcl-pr INVOICE_create int(10);
+  custno  like(INVHDR_t.CUSTNO) const;
+  header  likeds(INVOICE_HEADER_t) options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_openList int(10);
+  incPaid   ind          const options(*omit:*nopass);
+  startDate date(*iso)   const options(*omit:*nopass);
+  endDate   date(*iso)   const options(*omit:*nopass);
+  custno    like(INVHDR_t.CUSTNO) const options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_readList int(10);
+  header  likeds(INVOICE_HEADER_t) options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_closeList;
+end-pr;
+
+dcl-pr invoice_getHeader int(10);
+  invno   like(INVHDR_t.INVNO) const;
+  crtdate date(*iso) const options(*omit:*nopass);
+  header  likeds(INVOICE_HEADER_t) options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_getDetail int(10);
+  invno   like(INVHDR_t.INVNO) const;
+  crtdate date(*iso) const options(*omit);
+  detail  likeds(INVOICE_DETAIL_t)
+          dim(999) options(*omit:*nopass:*varsize);
+  detelem int(10) const options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_setHeader int(10);
+  header  likeds(INVOICE_HEADER_t);
+end-pr;
+
+dcl-pr invoice_setDetail int(10);
+  detail  likeds(INVOICE_DETAIL_t);
+end-pr;
+
+dcl-pr invoice_checkItem int(10);
+  itemno   like(ITEMMAS_t.ITEMNO) const;
+  dftDescr like(ITEMMAS_t.DESCR)  options(*omit:*nopass);
+  dftUom   like(ITEMMAS_t.UOM)    options(*omit:*nopass);
+  dftPrice like(ITEMMAS_t.PRICE)  options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_checkPrice int(10);
+  itemno   like(ITEMMAS_t.ITEMNO) const;
+  price    like(INVDET_t.PRICE) const;
+end-pr;
+
+dcl-pr invoice_save int(10);
+end-pr;
+
+dcl-pr invoice_markPaid int(10);
+  invno   like(INVHDR_t.INVNO) const;
+  crtdate date(*iso)   const options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_delete int(10);
+  invno   like(INVHDR_t.INVNO) const;
+  crtdate date(*iso)   const options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_print int(10);
+  invno   like(INVHDR_t.INVNO) const;
+  crtdate date(*iso)    const options(*omit:*nopass);
+  outq    varchar(21)   const options(*omit:*nopass);
+  stmf    varchar(5000) const options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_toJobDate packed(6: 0);
+  isoDate packed(8: 0) const;
+end-pr;
+
+dcl-pr invoice_toIsoDate packed(8: 0);
+  jobDate packed(6: 0) const;
+end-pr;
+
+dcl-pr invoice_checkUom int(10);
+  uom   like(UNITS_t.code)  const;
+  uom3  like(UNITS_t.code3) options(*omit:*nopass);
+  uom12 like(UNITS_t.desc)  options(*omit:*nopass);
+end-pr;
+
+dcl-pr invoice_getTermsMsg int(10);
+  terms    like(CUSTMAS_t.termType) const;
+  days     like(CUSTMAS_t.termDays) const;
+  termsMsg varchar(18);
+end-pr;
+
+dcl-pr invoice_getLastErr varchar(32767);
+  msgId     char(7)     options(*nopass:*omit);
+  msgDta    char(32767) options(*nopass:*omit);
+  msgDtaLen int(10)     options(*nopass:*omit);
+end-pr;

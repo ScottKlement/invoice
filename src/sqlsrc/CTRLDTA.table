@@ -1,0 +1,8 @@
+Create or Replace Table CTRLDTA (
+  CKEY     char(10) not null default ' ',
+  CSUBKEY  char(10) not null default ' ',
+  CVALUE   decimal(7, 0) not null default 0,
+  CSTORAGE char(100) not null default ' ',
+  primary key (CKEY, CSUBKEY)
+)
+rcdfmt CTRLDTAF;
