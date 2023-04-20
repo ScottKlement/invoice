@@ -15,8 +15,8 @@ dcl-ds ITEMMAS_t ext extname('ITEMMAS') qualified template end-ds;
 dcl-ds UNITS_t   ext extname('UNITS')   PREFIX('':2) qualified template end-ds;
 dcl-ds CTRLDTA_t ext extname('CTRLDTA') PREFIX('':1) qualified template end-ds;
 
-dcl-c  SUCCESS 1;
-dcl-c  FAIL    0;
+dcl-c  SUCCESS 0;
+dcl-c  FAIL    -1;
 
 dcl-ds INVOICE_HEADER_t qualified inz template;
   INVNO     like(INVHDR_t.INVNO   );

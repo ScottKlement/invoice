@@ -315,8 +315,7 @@ $(ILIBRARY)/%.file: src/ddssrc/%.prtf | $$($$*.file_deps) $(ISRCFILE)
 
 $(ILIBRARY)/%.file: src/sqlsrc/%.table | $$($$*.file_deps) $(ISRCFILE)
 	@$(info Creating $(@))touch -C 1208 $(LOGFILE)
-	(rm -rf '$(@)'
-	cat '$(<)' | Rfile -wQ '$(SRCFILE2)'
+	(cat '$(<)' | Rfile -wQ '$(SRCFILE2)'
 	$(SETLIBLIST)
 	system -v 'runsqlstm $(SRCFILE) commit(*none) naming(*sys) dftrdbcol($(LIBRARY)) $(SQL_DEBUG_OPTS) tgtrls($(TGTRLS))'
 	system -v "chgobjown obj($(LIBRARY)/$(basename $(@F))) objtype(*$(subst .,,$(suffix $(@F)))) newown($(OWNER)) curownaut(*revoke)"
