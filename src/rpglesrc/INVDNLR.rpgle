@@ -64,7 +64,7 @@ stmf = %str(tmpnam(*omit)) + '-' + %char(%timestamp());
 
 monitor;
   rawurl = %str(var);
-  url = utfurl;
+  url = rawurl;
   pos = %scan(PREF:url) + %len(PREF);
   temp = %subst(url:pos);
   pos = %scan(SUFF:temp);
