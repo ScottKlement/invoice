@@ -256,7 +256,7 @@ dcl-proc openURL;
     len  packed(15:5) const;
   end-pr;
 
-  URL = 'http://i.scottklement.com/invoices/inv'
+  URL = 'http://ibmi.scottklement.com:9999/orcinv/inv'
       + %editc(invno:'X') + '.pdf';
 
   if needPCO;

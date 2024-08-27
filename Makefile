@@ -71,7 +71,7 @@ define MSGF_OBJS
 	INVMSGF.msgf 
 endef
 define DSPF_OBJS
-	ITMINQD.file INVENTD.file INVINQD.file INVINQ2D.file
+	ITMINQD.file INVENTD.file INVINQD.file INVINQ2D.file CUSTINQD.file
 endef
 define PRTF_OBJS
 	INVOICE.ovl INVOICE.file
@@ -79,6 +79,7 @@ endef
 define PGM_OBJS
 	ITMINQR.pgm INVENTR.pgm INVINQR.pgm 
 	INVOICE.srvpgm INVENT2R.pgm INVINQ2R.pgm INVDNLR.pgm
+	CUSTINQR.pgm
 endef	
 define TABLE_OBJS
 	CTRLDTA.file CUSTMAS.file INVDET.file INVHDR.file ITEMMAS.file UNITS.file
@@ -102,13 +103,14 @@ SRCF_OBJS := $(addprefix $(ILIBRARY)/, $(SRCF_OBJS))
 TARGETS := $(MSGF_OBJS) $(BNDDIR_OBJS) $(TABLE_OBJS) $(DSPF_OBJS) $(PRTF_OBJS)
 
 INVINQ2R.pgm_deps			:= $(addprefix $(ILIBRARY)/, INVOICE.srvpgm INVINQ2D.file)
-INVENT2R.pgm_deps			:= $(addprefix $(ILIBRARY)/, INVOICE.srvpgm INVENTD.file ITMINQR.pgm)
+INVENT2R.pgm_deps			:= $(addprefix $(ILIBRARY)/, INVOICE.srvpgm INVENTD.file ITMINQR.pgm CUSTINQR.pgm)
 INVDNLR.pgm_deps			:= $(addprefix $(ILIBRARY)/, INVOICE.srvpgm)
 INVOICE.module_deps   := $(MSGF_OBJS) $(PRTF_OBJS)
 INVOICE.srvpgm_deps   := $(addprefix $(ILIBRARY)/, INVOICE.module)
 INVENTR.pgm_deps   		:= $(addprefix $(ILIBRARY)/, INVENTD.file ITMINQR.pgm)
 INVINQR.pgm_deps   		:= $(addprefix $(ILIBRARY)/, INVINQD.file)
 ITMINQR.pgm_deps			:= $(addprefix $(ILIBRARY)/, ITMINQD.file)
+CUSTINQR.pgm_deps			:= $(addprefix $(ILIBRARY)/, CUSTINQD.file)
 
 .PHONY: all clean srcpf
 

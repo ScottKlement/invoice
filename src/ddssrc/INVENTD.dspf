@@ -65,6 +65,7 @@
      A*%%TS  SD  20230405  072801  SKLEMENT    REL-V7R3M0  5770-WDS
      A                                      CA03(03 'F3=Exit')
      A                                      CA12(12 'F12=Cancel')
+     A                                      CF04(04 'F4=Promot')
      A                                  1 34'Invoice Entry'
      A                                      DSPATR(HI)
      A                                  5  9'Customer to create invoice for:'
@@ -72,7 +73,7 @@
      A            CUSTNO         4Y 0B  5 41EDTCDE(M)
      A            MSG           78A  O 23  2DSPATR(HI)
      A                                      DSPATR(BL)
-     A                                 24  2'F12=Cancel'
+     A                                 24  2'F4=Prompt  F12=Cancel'
      A                                      COLOR(BLU)
      A                                  1 73'INVENT2'
      A          R INVENT3

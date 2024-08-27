@@ -1,0 +1,159 @@
+     A*%%TS  SD  20240826  224627  SKLEMENT    REL-V7R3M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A          R SFL                       SFL
+     A*%%TS  SD  20240826  181909  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            OPT            1A  B  5  5
+     A            CUSTNUMB       4  0O  5  9
+     A            CUSTNAME      30A  O  5 15
+     A            CUSTCONT      30A  O  5 47
+     A          R CTL                       SFLCTL(SFL)
+     A*%%TS  SD  20240826  181909  SKLEMENT    REL-V7R3M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0017)
+     A                                      CA03(03)
+     A                                      CA12(12)
+     A                                      CA05(05)
+     A                                      OVERLAY
+     A                                      PRINT
+     A  51N50                               SFLDSP
+     A N50                                  SFLDSPCTL
+     A  50                                  SFLCLR
+     A N50                                  SFLEND(*MORE)
+     A                                      SFLCSRRRN(&LASTRRN)
+     A            LASTRRN        5S 0H
+     A            NEXTRRN        4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1 30'Select Customer to Use'
+     A                                      DSPATR(HI)
+     A                                  2  8'1=Select'
+     A                                      COLOR(BLU)
+     A                                  2 18'2=Change'
+     A                                      COLOR(BLU)
+     A                                  4  4'Opt'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  4 15'        Customer Name         '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  4 47'       Customer Contact       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  4  9'Numb'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A          R FTR
+     A*%%TS  SD  20240826  180844  SKLEMENT    REL-V7R3M0  5770-WDS
+     A            MSG           78A  O 23  2DSPATR(HI)
+     A                                      DSPATR(BL)
+     A                                 24  2'F12=Cancel'
+     A                                      COLOR(BLU)
+     A          R EDITCUST
+     A*%%TS  SD  20240826  181909  SKLEMENT    REL-V7R3M0  5770-WDS
+     A                                      CA03(03)
+     A                                      CA12(12)
+     A                                      CA21(21)
+     A                                      CHGINPDFT
+     A                                  1 29'Change Customer Details'
+     A                                      DSPATR(HI)
+     A                                  3  2'Cust No........'
+     A                                      DSPATR(HI)
+     A            CUSTNO         4  0B  3 18
+     A N40                                  DSPATR(PR)
+     A  40                                  DSPATR(UL)
+     A                                  3 64'Crt.'
+     A                                      DSPATR(HI)
+     A            CRTDATE       10   O  3 70
+     A                                  4  2'Name...........'
+     A                                      DSPATR(HI)
+     A            NAME          30   B  4 18DSPATR(HI)
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                  4 64'Ord..'
+     A                                      DSPATR(HI)
+     A            LASTORD       10   O  4 70DSPATR(HI)
+     A                                  5  2'Sales Rep......'
+     A                                      DSPATR(HI)
+     A            ACCTREP        3   B  5 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                  5 64'Paid.'
+     A                                      DSPATR(HI)
+     A            LASTPAID      10   O  5 70
+     A                                  7  2'Street.........'
+     A                                      DSPATR(HI)
+     A            STREET        30   B  7 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                  8  2'City/State/Zip.'
+     A                                      DSPATR(HI)
+     A            CITY          20   B  8 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A            STATE          2   B  8 39
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A            POSTAL        13   B  8 42
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                  9  2'Country........'
+     A                                      DSPATR(HI)
+     A            COUNTRY       30   B  9 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 11  2'Primary Contact'
+     A                                      DSPATR(HI)
+     A            CONTACT       30   B 11 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 12  2'Email..........'
+     A                                      DSPATR(HI)
+     A            EMAIL         63   B 12 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 13  2'Phone..........'
+     A                                      DSPATR(HI)
+     A            PHONE         15   B 13 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 15  2'Billing Contact'
+     A                                      DSPATR(HI)
+     A            BILLCONT      30   B 15 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 16  2'Email..........'
+     A                                      DSPATR(HI)
+     A            BILEMAIL      63   B 16 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 17  2'Phone..........'
+     A                                      DSPATR(HI)
+     A            BILPHONE      15   B 17 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 19  2'Terms:'
+     A                                      DSPATR(HI)
+     A            TERMTYPE       1   B 19  9
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 19 12'Days:'
+     A                                      DSPATR(HI)
+     A            TERMDAYS       3  0B 19 18
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 20  2'Territory:'
+     A                                      DSPATR(HI)
+     A            TERR           1   B 20 13
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A                                 21  2'Channgel:'
+     A                                      DSPATR(HI)
+     A            CHANNEL        1   B 21 13
+     A  41                                  DSPATR(PR)
+     A N41                                  DSPATR(UL)
+     A            MSG           78   O 23  2DSPATR(HI)
+     A                                      DSPATR(BL)
+     A                                 24  2'F12=Cancel'
+     A                                      COLOR(BLU)
+     A                                 24 14'F21=Unlock Custno'
+     A                                      COLOR(BLU)

@@ -212,6 +212,9 @@ dcl-proc CreateNewOrder;
     ERR like(MSG);
   end-pi;
 
+  dcl-pr CUSTINQR extpgm;
+    CustNo zoned(4: 0);
+  end-pr;
 
   dcl-ds INV likeds(INVOICE_header_t);
   dcl-ds DSP2 likerec(INVENT2:*ALL) inz;
@@ -223,6 +226,12 @@ dcl-proc CreateNewOrder;
 
     IF EXIT or CANCEL;
       return GO_BACK;
+    endif;
+
+    if PROMPT;
+      CUSTINQR(DSP2.CUSTNO);
+      DSP2.MSG = x'41';
+      ITER;
     endif;
 
     if INVOICE_create(DSP2.CUSTNO: INV) = FAIL;
