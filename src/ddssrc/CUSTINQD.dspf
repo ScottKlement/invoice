@@ -69,6 +69,7 @@
      A            NAME          30   B  4 18DSPATR(HI)
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                  4 64'Ord..'
      A                                      DSPATR(HI)
      A            LASTORD       10   O  4 70DSPATR(HI)
@@ -77,6 +78,7 @@
      A            ACCTREP        3   B  5 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                  5 64'Paid.'
      A                                      DSPATR(HI)
      A            LASTPAID      10   O  5 70
@@ -85,11 +87,13 @@
      A            STREET        30   B  7 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                  8  2'City/State/Zip.'
      A                                      DSPATR(HI)
      A            CITY          20   B  8 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A            STATE          2   B  8 39
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
@@ -101,16 +105,19 @@
      A            COUNTRY       30   B  9 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                 11  2'Primary Contact'
      A                                      DSPATR(HI)
      A            CONTACT       30   B 11 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                 12  2'Email..........'
      A                                      DSPATR(HI)
      A            EMAIL         63   B 12 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                 13  2'Phone..........'
      A                                      DSPATR(HI)
      A            PHONE         15   B 13 18
@@ -121,11 +128,13 @@
      A            BILLCONT      30   B 15 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                 16  2'Email..........'
      A                                      DSPATR(HI)
      A            BILEMAIL      63   B 16 18
      A  41                                  DSPATR(PR)
      A N41                                  DSPATR(UL)
+     A                                      CHECK(LC)
      A                                 17  2'Phone..........'
      A                                      DSPATR(HI)
      A            BILPHONE      15   B 17 18
