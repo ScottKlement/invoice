@@ -1059,7 +1059,7 @@ dcl-proc fmtcsz;
   if state <> ' ';
     csz = %trimr(csz) + ', ' + state;
   endif;
-  if postal < ' ';
+  if postal <> ' ';
     csz = %trimr(csz) + ' ' + postal;
   endif;
 
