@@ -10,6 +10,10 @@ dcl-f INVINQ2D workstn SFILE(INVINQ2S:RRN2)
                        INDDS(dspIndMap)
                        usropn;
 
+dcl-ds PSDS psds qualified;
+  library char(10) pos(81);
+end-ds;
+
 /copy invoice_h
 
 dcl-c GO_BACK -1;
@@ -256,8 +260,9 @@ dcl-proc openURL;
     len  packed(15:5) const;
   end-pr;
 
-  URL = 'http://ibmi.scottklement.com:9999/orcinv/inv'
-      + %editc(invno:'X') + '.pdf';
+  URL = 'http://ibmi.scottklement.com:9999/'
+      + %trim(%lower(PSDS.library))
+      + '/inv' + %editc(invno:'X') + '.pdf';
 
   if needPCO;
     CMD = 'STRPCO';

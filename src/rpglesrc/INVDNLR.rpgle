@@ -8,7 +8,11 @@ ctl-opt option(*srcstmt:*nodebugio) bnddir('SKLEMENT/QHTTPSVR': 'INVOICE');
 /copy ifsio_h
 /copy invoice_h
 
-dcl-c PREF  '/invoices/inv';
+dcl-ds PSDS psds qualified;
+  library char(10) pos(81);
+end-ds;
+
+dcl-s PREF   varchar(100);
 dcl-c SUFF  '.pdf';
 dcl-c FOLDER '/www/scott1/htdocs';
 dcl-c CRLF   x'0d25';
@@ -65,6 +69,7 @@ stmf = %str(tmpnam(*omit)) + '-' + %char(%timestamp());
 monitor;
   rawurl = %str(var);
   url = rawurl;
+  PREF= '/' + %trim(%lower(PSDS.library)) + '/inv';
   pos = %scan(PREF:url) + %len(PREF);
   temp = %subst(url:pos);
   pos = %scan(SUFF:temp);
