@@ -24,6 +24,10 @@ ctl-opt debug(*constants: *retval);
 
 dcl-f CTRLDTA disk keyed usage(*input:*output:*update) usropn;
 
+dcl-ds PSDS psds qualified;
+  library char(10) pos(81);
+end-ds;
+
 /copy invoice_h
 
 dcl-pr QCMDEXC extpgm('QCMDEXC');
@@ -1100,6 +1104,7 @@ dcl-proc invoice_print export;
   dcl-s i        int(10) inz(0);
   dcl-s first    ind inz(*on);
   dcl-s termsMsg varchar(18);
+  dcl-s overlay  varchar(21);
 
   dcl-ds H  likerec(HEADING: *output);
   dcl-ds D1 likerec(DETAIL1: *output);
@@ -1115,20 +1120,26 @@ dcl-proc invoice_print export;
     return FAIL;
   endif;
 
+  if PSDS.library = 'ORCINV';
+    overlay = '*LIBL/ORCINV';
+  else;
+    overlay = '*LIBL/INVOICE';
+  endif;
+
   if %parms >= 4 and %addr(stmf)<>*null;
     cmd = 'OVRPRTF FILE(INVOICE) +
                    TOSTMF(''' + stmf + ''') +
                    WSCST(*PDF) +
                    PAGESIZE(66 85 *ROWCOL) +
                    OVRFLW(41) +
-                   FRONTOVL(*LIBL/INVOICE 0.07 0) +
+                   FRONTOVL(' + overlay + ' 0.07 0) +
                    DEVTYPE(*AFPDS)';
   elseif %parms >= 3 and %addr(outq)<>*null;
     cmd = 'OVRPRTF FILE(INVOICE) +
                    OUTQ(' + outq + ') +
                    PAGESIZE(66 85 *ROWCOL) +
                    OVRFLW(41) +
-                   FRONTOVL(*LIBL/INVOICE 0.07 0) +
+                   FRONTOVL(' + overlay + ' 0.07 0) +
                    DEVTYPE(*AFPDS)';
   else;
     return FAIL;

@@ -74,7 +74,7 @@ define DSPF_OBJS
 	ITMINQD.file INVENTD.file INVINQD.file INVINQ2D.file CUSTINQD.file
 endef
 define PRTF_OBJS
-	INVOICE.ovl INVOICE.file
+	ORCINV.ovl INVOICE.ovl INVOICE.file
 endef	
 define PGM_OBJS
 	ITMINQR.pgm INVENTR.pgm INVINQR.pgm 
