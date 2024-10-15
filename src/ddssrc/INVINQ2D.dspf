@@ -62,13 +62,13 @@
      A                                  6  4'Invoiced:'
      A                                      DSPATR(HI)
      A            INVDATE6       8A  O  6 14
-     A            DELSTR        30   O  6 26
+     A            DELSTREET     30   O  6 26
      A                                  7  8'Paid:'
      A                                      DSPATR(HI)
      A            PAIDDATE6      8A  O  7 14
      A            DELCITY       20A  O  7 26
      A            DELSTATE       2   O  7 47
-     A            DELPOST       13   O  7 50
+     A            DELPOSTAL     13   O  7 50
      A                                  8  8'Cust:'
      A                                      DSPATR(HI)
      A            CUSTNO         4S 0O  8 14
@@ -173,13 +173,13 @@
      A                                  6  4'Invoiced:'
      A                                      DSPATR(HI)
      A            INVDATE6       8A  O  6 14
-     A            BILSTR        30A  O  6 26
+     A            BILSTREET     30A  O  6 26
      A                                  7  8'Paid:'
      A                                      DSPATR(HI)
      A            PAIDDATE6      8A  O  7 14
      A            BILCITY       20A  O  7 26
      A            BILSTATE       2A  O  7 47
-     A            BILPOST       13A  O  7 50
+     A            BILPOSTAL     13A  O  7 50
      A                                  8  8'Cust:'
      A                                      DSPATR(HI)
      A            CUSTNO         4S 0O  8 14
