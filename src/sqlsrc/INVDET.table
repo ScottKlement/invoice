@@ -7,7 +7,7 @@ Create or Replace Table INVDET (
   UOM       char(1)       not null default 'E',
   DESCR     char(35)      not null default ' ',
   PRICE     decimal(9, 3) not null default 0,
-  QTY       decimal(7, 0) not null default 0,
+  QTY       decimal(9, 2) not null default 0,
   WGTLBS    decimal(7, 1) not null default 0,
   primary key (INVNO, CRTDATE, LINENO)
 )

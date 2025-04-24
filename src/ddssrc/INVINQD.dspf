@@ -16,12 +16,12 @@
      A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
      A            SCITEMNO       5Y 0O 10  2EDTCDE(3)
      A            SCPRODUCT      1A  O 10  8
-     A            SCQTY          5Y 0O 10 10EDTCDE(3)
-     A            SCUOM          3   O 10 16
-     A            SCDESCR       30   O 10 20
-     A            SCPRICE        7Y 2O 10 51EDTCDE(L)
-     A            SCWGTLBS       7  1O 10 61EDTCDE(3)
+     A            SCQTY          7Y 2O 10 11EDTCDE(3)
+     A            SCUOM          3   O 10 21
+     A            SCDESCR       30   O 10 25
+     A            SCPRICE        7Y 2O 10 58EDTCDE(L)
      A            SCEXTN         8Y 2O 10 70EDTCDE(L)
+     A            SCWGTLBS       7  1H
      A          R INVINQ2C                  SFLCTL(INVINQ2S)
      A*%%TS  SD  20230405  131354  SKLEMENT    REL-V7R3M0  5770-WDS
      A                                      CA12(12)
@@ -77,22 +77,19 @@
      A                                  9  8'T'
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 10'  Qty'
+     A                                  9 11'     Qty '
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 16'UOM'
+     A                                  9 21'UOM'
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 20'       Item Description       '
+     A                                  9 25'       Item Description       '
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 51'   Price '
+     A                                  9 57'   Price '
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 61'  Weight'
-     A                                      DSPATR(HI)
-     A                                      DSPATR(UL)
-     A                                  9 70'  LineExtn'
+     A                                  9 69'  LineExtn'
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
      A          R INVINQ2F
@@ -127,12 +124,12 @@
      A          R INVINQ3S                  SFL
      A            SCITEMNO       5Y 0O 10  2EDTCDE(3)
      A            SCPRODUCT      1   O 10  8
-     A            SCQTY          5Y 0O 10 10EDTCDE(3)
-     A            SCUOM          3   O 10 16
-     A            SCDESCR       30   O 10 20
-     A            SCPRICE        7Y 2O 10 51EDTCDE(L)
-     A            SCWGTLBS       7Y 1O 10 61EDTCDE(3)
+     A            SCQTY          7Y 2O 10 11EDTCDE(3)
+     A            SCUOM          3   O 10 21
+     A            SCDESCR       30   O 10 25
+     A            SCPRICE        7Y 2O 10 58EDTCDE(L)
      A            SCEXTN         8Y 2O 10 70EDTCDE(L)
+     A            SCWGTLBS       7  1H
      A          R INVINQ3C                  SFLCTL(INVINQ3S)
      A*%%TS  SD  20230405  143129  SKLEMENT    REL-V7R3M0  5770-WDS
      A                                      SFLSIZ(0999)
@@ -188,22 +185,19 @@
      A                                  9  8'T'
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 10'  Qty'
+     A                                  9 10'     Qty '
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 16'UOM'
+     A                                  9 21'UOM'
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 20'       Item Description       '
+     A                                  9 25'       Item Description       '
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 51'   Price '
+     A                                  9 57'   Price '
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
-     A                                  9 61'  Weight'
-     A                                      DSPATR(HI)
-     A                                      DSPATR(UL)
-     A                                  9 70'  LineExtn'
+     A                                  9 69'  LineExtn'
      A                                      DSPATR(HI)
      A                                      DSPATR(UL)
      A          R INVINQ3F

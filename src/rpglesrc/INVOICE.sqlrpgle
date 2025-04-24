@@ -1176,8 +1176,15 @@ dcl-proc invoice_print export;
 
   invoice_getTermsMsg( gINV.hdr.termType
                      : gINV.hdr.termDays
-                     : termsMsg );
-  H.termsMsg = '      ' + termsMsg;
+                     : termsMsg );      
+  termsMsg = %trim(termsMsg);
+  if %len(termsMsg) < 12;            
+     H.termsMsg = '      ' + termsMsg;
+  elseif %len(termsMsg) <= 16;
+     H.termsMsg = ' ' + termsMsg;
+  else;
+     H.termsMsg = termsMsg;
+  endif;
 
   write HEADING H;
 
@@ -1369,6 +1376,8 @@ dcl-proc invoice_getTermsMsg export;
     termsMsg = 'Net/' + %char(days);
   when terms = 'M';
     termsMsg = 'Net EOM/' + %char(days);
+  when terms = 'I';
+    termsMsg = 'Due Upon Receipt';
   other;
     INV1019.terms = terms;
     setError('INV1019': INV1019: %size(INV1019));

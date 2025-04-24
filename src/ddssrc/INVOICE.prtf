@@ -17,12 +17,12 @@
      A            TERMSMSG      18A  O 24 62
      A*
      A          R DETAIL1
-     A            QTY            7  0O 28  7EDTCDE(L)
+     A            QTY            7  2O 28  7EDTCDE(L)
      A            DESCR         35   O 28 17
      A            PRICE          9  3O 28 56EDTCDE(L)
      A            LINEAMT        9  3O 28 70EDTCDE(L)
      A          R DETAIL2                   SPACEB(1)
-     A            QTY            7  0O     7EDTCDE(L)
+     A            QTY            7  2O     7EDTCDE(L)
      A            DESCR         35   O    17
      A            PRICE          9  3O    56EDTCDE(L)
      A            LINEAMT        9  3O    70EDTCDE(L)
